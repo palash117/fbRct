@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "./firebase";
 
+// redux
+import { Provider } from "react-redux";
+import store from "./store";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+import LoginAlert from "./components/LoginAlert";
+import TransactionContainer from "./components/TransactionContainer";
+var firebase = global.firebase;
 function App() {
+  console.log("firebase is ", firebase);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <NavBar></NavBar>
+        <LoginAlert></LoginAlert>
+        <TransactionContainer></TransactionContainer>
+      </div>
+    </Provider>
   );
 }
 
